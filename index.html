@@ -4,41 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Country Inn & Suites - Daily Report</title>
+
+  <!-- External CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <!-- Form Controls -->
+
+    <!-- =========================
+         CONTROL BUTTONS 
+    ========================== -->
     <div class="form-controls">
+      <!-- Import data file -->
       <button class="btn primary" onclick="importData()">Import CSV/Excel</button>
-      <input type="file" id="fileInput" class="file-input" accept=".csv,.xlsx,.xls,.json" onchange="handleFileImport(event)">
+      <input 
+        type="file" 
+        id="fileInput" 
+        class="file-input" 
+        accept=".csv,.xlsx,.xls,.json" 
+        onchange="handleFileImport(event)">
+      
+      <!-- Export options -->
       <button class="btn" onclick="exportCSV()">Export CSV</button>
       <button class="btn" onclick="exportPDF()">Export PDF</button>
+      
+      <!-- Utility actions -->
       <button class="btn" onclick="emailReport()">Email Report</button>
       <button class="btn" onclick="printReport()">Print</button>
       <button class="btn" onclick="clearForm()">Clear Form</button>
     </div>
 
-    <!-- Header -->
+    <!-- =========================
+         HEADER SECTION 
+    ========================== -->
     <div class="header">
       <div class="header-info">
         <span>BISMILLAH - 110</span>
         <span>BISMILLAH - 110</span>
       </div>
+
       <h1>COUNTRY INN AND SUITES - MOODY</h1>
+
+      <!-- Page indicators -->
       <div class="header-info">
         <span>Page <strong>1</strong></span>
         <span>Page <strong>2</strong></span>
       </div>
+
+      <!-- Date and Day inputs -->
       <div class="header-info">
         <span>DATE: <input type="date" id="reportDate" name="reportDate"></span>
         <span>DAY: <input type="text" id="reportDay" name="reportDay"></span>
       </div>
     </div>
 
-    <!-- Main Form -->
+    <!-- =========================
+         MAIN FORM SECTION
+    ========================== -->
     <div class="form-row">
-      <!-- Page 1 - Room Assignments -->
+
+      <!-- ---------- PAGE 1: ROOM ASSIGNMENTS ---------- -->
       <div class="form-section">
         <div class="section-title">DAILY SHEET (Page 1)</div>
         <table>
@@ -59,7 +84,7 @@
         </table>
       </div>
 
-      <!-- Page 2 - RV/Storage and Summary -->
+      <!-- ---------- PAGE 2: ROOMS + RV/STORAGE ---------- -->
       <div class="form-section">
         <div class="section-title">DAILY SHEET (Page 2)</div>
         <table>
@@ -79,7 +104,7 @@
           <tbody id="roomTable2"></tbody>
         </table>
 
-        <!-- RV Spots / Storages Section -->
+        <!-- RV Spots / Storage -->
         <div style="margin-top: 20px;">
           <div class="section-title">RV SPOTS / STORAGES</div>
           <table>
@@ -102,8 +127,12 @@
       </div>
     </div>
 
-    <!-- Summary Section -->
+    <!-- =========================
+         SUMMARY SECTION 
+    ========================== -->
     <div class="summary-section">
+
+      <!-- Column 1: Cash / Credit / Deposit -->
       <div class="summary-box">
         <div class="summary-row">
           <span>Total Cash:</span>
@@ -118,6 +147,8 @@
           <input type="number" class="summary-input" id="bankDeposit" name="bankDeposit" step="0.01">
         </div>
       </div>
+
+      <!-- Column 2: Sales / Misc / Accounts -->
       <div class="summary-box">
         <div class="summary-row">
           <span>Total Sales:</span>
@@ -139,15 +170,27 @@
     </div>
   </div>
 
-  <!-- Libraries -->
+  <!-- =========================
+       EXTERNAL LIBRARIES
+  ========================== -->
+  <!-- XLSX: For Excel/CSV Import -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+  <!-- jsPDF: For PDF Export -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- EmailJS: For Email Reports -->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    (function(){ emailjs.init("P0Z5_DSxnpLSl8VFz"); })(); // replace with your EmailJS public key
+    (function () {
+      // Initialize EmailJS (replace with your public key)
+      emailjs.init("P0Z5_DSxnpLSl8VFz");
+    })();
   </script>
 
-  <!-- Main Script -->
+  <!-- =========================
+       MAIN SCRIPT
+  ========================== -->
   <script src="script.js"></script>
 </body>
 </html>
