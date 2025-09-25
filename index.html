@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Country Inn & Suites - Daily Report</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Form Controls -->
+    <div class="form-controls">
+      <button class="btn primary" onclick="importData()">Import CSV/Excel</button>
+      <input type="file" id="fileInput" class="file-input" accept=".csv,.xlsx,.xls,.json" onchange="handleFileImport(event)">
+      <button class="btn" onclick="exportCSV()">Export CSV</button>
+      <button class="btn" onclick="exportPDF()">Export PDF</button>
+      <button class="btn" onclick="emailReport()">Email Report</button>
+      <button class="btn" onclick="printReport()">Print</button>
+      <button class="btn" onclick="clearForm()">Clear Form</button>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-info">
+        <span>BISMILLAH - 110</span>
+        <span>BISMILLAH - 110</span>
+      </div>
+      <h1>COUNTRY INN AND SUITES - MOODY</h1>
+      <div class="header-info">
+        <span>Page <strong>1</strong></span>
+        <span>Page <strong>2</strong></span>
+      </div>
+      <div class="header-info">
+        <span>DATE: <input type="date" id="reportDate" name="reportDate"></span>
+        <span>DAY: <input type="text" id="reportDay" name="reportDay"></span>
+      </div>
+    </div>
+
+    <!-- Main Form -->
+    <div class="form-row">
+      <!-- Page 1 - Room Assignments -->
+      <div class="form-section">
+        <div class="section-title">DAILY SHEET (Page 1)</div>
+        <table>
+          <thead>
+            <tr>
+              <th class="room-number">Room No</th>
+              <th class="name-field">Name</th>
+              <th class="small-field">Rent</th>
+              <th class="small-field">Tax</th>
+              <th class="small-field">Misc<br>Charges</th>
+              <th class="checkbox-field">Check IN</th>
+              <th class="checkbox-field">Check OUT</th>
+              <th class="small-field">Balance Due</th>
+              <th class="checkbox-field">PAID</th>
+            </tr>
+          </thead>
+          <tbody id="roomTable1"></tbody>
+        </table>
+      </div>
+
+      <!-- Page 2 - RV/Storage and Summary -->
+      <div class="form-section">
+        <div class="section-title">DAILY SHEET (Page 2)</div>
+        <table>
+          <thead>
+            <tr>
+              <th class="room-number">Room No</th>
+              <th class="name-field">Name</th>
+              <th class="small-field">Rent</th>
+              <th class="small-field">Tax</th>
+              <th class="small-field">Misc<br>Charges</th>
+              <th class="checkbox-field">Check IN</th>
+              <th class="checkbox-field">Check OUT</th>
+              <th class="small-field">Balance Due</th>
+              <th class="checkbox-field">PAID</th>
+            </tr>
+          </thead>
+          <tbody id="roomTable2"></tbody>
+        </table>
+
+        <!-- RV Spots / Storages Section -->
+        <div style="margin-top: 20px;">
+          <div class="section-title">RV SPOTS / STORAGES</div>
+          <table>
+            <thead>
+              <tr>
+                <th class="room-number">Spot No</th>
+                <th class="name-field">Name</th>
+                <th class="small-field">Rent</th>
+                <th class="small-field">Tax</th>
+                <th class="small-field">Misc<br>Charges</th>
+                <th class="checkbox-field">Check IN</th>
+                <th class="checkbox-field">Check OUT</th>
+                <th class="small-field">Balance Due</th>
+                <th class="checkbox-field">PAID</th>
+              </tr>
+            </thead>
+            <tbody id="rvTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary Section -->
+    <div class="summary-section">
+      <div class="summary-box">
+        <div class="summary-row">
+          <span>Total Cash:</span>
+          <input type="number" class="summary-input" id="totalCash" name="totalCash" step="0.01">
+        </div>
+        <div class="summary-row">
+          <span>Total Credit Card:</span>
+          <input type="number" class="summary-input" id="totalCredit" name="totalCredit" step="0.01">
+        </div>
+        <div class="summary-row">
+          <span>Bank Deposit:</span>
+          <input type="number" class="summary-input" id="bankDeposit" name="bankDeposit" step="0.01">
+        </div>
+      </div>
+      <div class="summary-box">
+        <div class="summary-row">
+          <span>Total Sales:</span>
+          <input type="number" class="summary-input" id="totalSales" name="totalSales" step="0.01" readonly>
+        </div>
+        <div class="summary-row">
+          <span>#2 Misc:</span>
+          <input type="number" class="summary-input" id="misc2" name="misc2" step="0.01">
+        </div>
+        <div class="summary-row">
+          <span>Open Acct:</span>
+          <input type="number" class="summary-input" id="openAcct" name="openAcct" step="0.01">
+        </div>
+        <div class="summary-row">
+          <span>PIA #:</span>
+          <input type="text" class="summary-input" id="piaNumber" name="piaNumber">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){ emailjs.init("P0Z5_DSxnpLSl8VFz"); })(); // replace with your EmailJS public key
+  </script>
+
+  <!-- Main Script -->
+  <script src="script.js"></script>
+</body>
+</html>

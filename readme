@@ -1,0 +1,111 @@
+Country Inn & Suites - Daily Report System
+Project Overview
+
+This project is a Daily Report Management System for Country Inn & Suites. It allows staff to efficiently record room and RV/storage occupancy, calculate totals, and generate reports. Users can import data from Excel/CSV, export reports as CSV or PDF, print them, and send a properly formatted daily report via email using EmailJS.
+
+The project is built using HTML, CSS, JavaScript, with XLSX.js for Excel/CSV handling, jsPDF for PDF export, and EmailJS for sending email reports.
+
+Features
+
+Dynamic Room/RV Tables
+
+Automatically generates tables for rooms, RV spots, and storage units.
+
+Each row has fields for Name, Rent, Tax, Miscellaneous Charges, Balance, and Check-in/Check-out status.
+
+Date and Day Auto-Fill
+
+The current date and day of the week are automatically filled on page load.
+
+Summary Section
+
+Totals for Cash, Credit, Bank Deposit, Sales, Miscellaneous, Open Account, and PIA Number.
+
+Automatically calculates total sales from room/RV charges.
+
+Import/Export
+
+Import CSV/Excel to populate the table.
+
+Export CSV for data backup.
+
+Export PDF for printing or offline sharing.
+
+Email Reports
+
+Sends a plain-text daily report to a manager or recipient using EmailJS.
+
+Includes properly formatted summaries and room details.
+
+Print & Clear
+
+Print the report directly from the browser.
+
+Clear all fields to start a new day.
+
+Project Structure
+project-folder/
+│
+├── index.html       # Main HTML file
+├── style.css        # CSS styles for layout and formatting
+├── script.js        # Main JavaScript file with form logic
+├── README.md        # Project documentation
+└── assets/          # Optional folder for images or logos
+
+Setup Instructions
+
+Clone or Download the Project
+
+git clone https://github.com/yourusername/daily-report.git
+cd daily-report
+
+
+Open index.html in a Browser
+
+No server is required; this is a client-side application.
+
+Recommended: Chrome, Edge, or Firefox.
+
+Configure EmailJS
+
+Sign up at EmailJS
+.
+
+Create a service and email template.
+
+Replace the following keys in index.html and script.js:
+
+emailjs.init("YOUR_PUBLIC_KEY"); // in index.html
+emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID", templateParams) // in script.js
+
+
+Set the recipient email in templateParams.to_email.
+
+Using the App
+
+Enter room and RV data manually or import from CSV/Excel.
+
+Fill summary information.
+
+Export or print reports as needed.
+
+Click Email Report to send the daily report.
+
+Dependencies
+
+XLSX.js
+ — Import/Export Excel and CSV.
+
+jsPDF
+ — Export PDF.
+
+EmailJS
+ — Send emails directly from the browser.
+
+Customization
+
+Add/Remove Rooms or RV spots: Modify the ranges in script.js generateRoomRows() function.
+
+Email Template: Customize emailReport() function to change the text format.
+
+Styling: Update style.css to change colors, fonts, or layout.
